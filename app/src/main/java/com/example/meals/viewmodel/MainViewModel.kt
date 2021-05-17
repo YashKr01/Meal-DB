@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    val data: MutableLiveData<List<Category>> = MutableLiveData()
+    private val data: MutableLiveData<List<Category>> = MutableLiveData()
 
     fun getCategoryList(): MutableLiveData<List<Category>> {
 
