@@ -4,29 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="?actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Home" />
+    android:background="@color/colorPrimary1"
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:fontFamily="@font/ubuntu_bold"
         android:text="@string/categories"
-        android:textColor="@color/text_color"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/edittext" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categories_recycler_view"
@@ -45,7 +37,7 @@
         android:layout_marginTop="@dimen/_18sdp"
         android:fontFamily="@font/ubuntu_bold"
         android:text="@string/recipes"
-        android:textColor="@color/text_color"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categories_recycler_view" />
@@ -58,5 +50,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/edittext_background"
+        android:drawableEnd="@drawable/ic_search"
+        android:drawableTint="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/ubuntu_medium"
+        android:hint="@string/search"
+        android:inputType="textPersonName"
+        android:padding="@dimen/_6sdp"
+        android:textColorHint="@color/colorTextPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="47dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

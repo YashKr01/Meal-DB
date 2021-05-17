@@ -11,15 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_8sdp"
-        app:cardElevation="@dimen/_5sdp"
+        app:cardElevation="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_item_category"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@color/colorPrimaryLight"
             android:contentDescription="@string/categories"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_4sdp"
         android:fontFamily="@font/ubuntu_medium"
-        android:textColor="@color/text_color"
+        android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="@id/card"
         app:layout_constraintTop_toBottomOf="@id/card"

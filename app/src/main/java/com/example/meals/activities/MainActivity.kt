@@ -1,5 +1,6 @@
-package com.example.meals
+package com.example.meals.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var recipeAdapter: CategoryRecipeAdapter
     private val categoryList = ArrayList<Category>()
+    private val recipeList = ArrayList<CategoryRecipe>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
         setContentView(binding.root)
 
         categoryAdapter = CategoryAdapter(categoryList, this, this)
-        recipeAdapter = CategoryRecipeAdapter(ArrayList(), this)
+        recipeAdapter = CategoryRecipeAdapter(recipeList, this)
 
         binding.categoriesRecyclerView.apply {
             setHasFixedSize(true)
@@ -40,25 +42,33 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
             adapter = categoryAdapter
         }
 
+        binding.recipesRecyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager =
+                LinearLayoutManager(this@MainActivity)
+            adapter = recipeAdapter
+        }
+
         viewModel.getCategoryList().observe(this, { list ->
             categoryList.clear()
             categoryList.addAll(list)
             categoryAdapter.notifyDataSetChanged()
         })
 
-        binding.recipesRecyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager =
-                LinearLayoutManager(this@MainActivity, RecyclerView.HORIZONTAL, false)
-            adapter = recipeAdapter
+        binding.edittext.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
         }
-
 
     }
 
     override fun categoryClickListener(category: Category) {
+
+        binding.textView2.text = category.name
+
         viewModel.getCategoryRecipes(category.name).observe(this, {
-            recipeAdapter.setData(it)
+            recipeList.clear()
+            recipeList.addAll(it)
+            recipeAdapter.notifyDataSetChanged()
         })
     }
 

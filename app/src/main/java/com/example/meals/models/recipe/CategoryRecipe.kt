@@ -12,5 +12,8 @@ data class CategoryRecipe(
     val name: String,
     @Expose
     @SerializedName("strMealThumb")
-    val image: String
+    val image: String,
+    @Expose
+    @SerializedName("strCategoryDescription")
+    val description: String
 )

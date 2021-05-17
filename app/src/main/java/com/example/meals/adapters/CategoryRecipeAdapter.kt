@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.meals.R
 import com.example.meals.models.recipe.CategoryRecipe
+import com.example.meals.utils.Constants.Companion.LOREN_IPSUM
 
 class CategoryRecipeAdapter(private var list: List<CategoryRecipe>, private val context: Context) :
     RecyclerView.Adapter<CategoryRecipeAdapter.RecipeViewHolder>() {
 
     inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.img_item_recipe)
-        val name: TextView = itemView.findViewById(R.id.txt_ite_recipe_name)
+        val name: TextView = itemView.findViewById(R.id.txt_item_recipe_name)
+        val description: TextView = itemView.findViewById(R.id.txt_recipe_description)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder =
@@ -26,19 +28,17 @@ class CategoryRecipeAdapter(private var list: List<CategoryRecipe>, private val 
 
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        val currentItem = list.get(position)
+
+        val currentItem = list[position]
 
         holder.apply {
             image.load(currentItem.image)
             name.text = currentItem.name
+            description.text = LOREN_IPSUM
         }
 
     }
 
-    fun setData(newList: List<CategoryRecipe>) {
-        this.list = newList
-        notifyDataSetChanged()
-    }
 
     override fun getItemCount() = list.size
 
