@@ -9,9 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.meals.R
+import com.example.meals.listeners.CategoryClickListener
 import com.example.meals.models.category.Category
 
-class CategoryAdapter(private var list: List<Category>, private val context: Context) :
+class CategoryAdapter(
+    private var list: List<Category>,
+    private val context: Context,
+    private val listener: CategoryClickListener
+) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
 
@@ -20,10 +25,6 @@ class CategoryAdapter(private var list: List<Category>, private val context: Con
         val name: TextView = itemView.findViewById(R.id.txt_category_name)
     }
 
-    public fun setData(categoryList: List<Category>) {
-        this.list = categoryList
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
@@ -37,6 +38,9 @@ class CategoryAdapter(private var list: List<Category>, private val context: Con
         holder.name.text = category.name
         holder.image.load(category.image) {
             crossfade(true)
+        }
+        holder.image.setOnClickListener {
+            listener.categoryClickListener(category)
         }
 
     }

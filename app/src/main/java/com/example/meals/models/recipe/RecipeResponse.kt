@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class RecipeResponse(
     @Expose
     @SerializedName("meals")
-    val recipeList: List<Recipe>
+    val list: List<CategoryRecipe>
 )
