@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
             startActivity(Intent(this, SearchActivity::class.java))
         }
 
+        binding.edittext.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
+
     }
 
     override fun categoryClickListener(category: Category) {
