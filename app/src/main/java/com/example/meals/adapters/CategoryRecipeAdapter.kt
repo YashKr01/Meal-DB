@@ -9,11 +9,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.meals.R
+import com.example.meals.listeners.CategoryClickListener
 import com.example.meals.models.recipe.CategoryRecipe
 import com.example.meals.utils.Constants.Companion.LOREN_IPSUM
 
-class CategoryRecipeAdapter(private var list: List<CategoryRecipe>, private val context: Context) :
-    RecyclerView.Adapter<CategoryRecipeAdapter.RecipeViewHolder>() {
+class CategoryRecipeAdapter(
+    private var list: List<CategoryRecipe>,
+    private val context: Context,
+    private val listener: CategoryClickListener
+) : RecyclerView.Adapter<CategoryRecipeAdapter.RecipeViewHolder>() {
 
     inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.img_item_recipe)
@@ -35,6 +39,10 @@ class CategoryRecipeAdapter(private var list: List<CategoryRecipe>, private val 
             image.load(currentItem.image)
             name.text = currentItem.name
             description.text = LOREN_IPSUM
+        }
+
+        holder.image.setOnClickListener {
+            listener.categoryRecipeClickListener(currentItem)
         }
 
     }

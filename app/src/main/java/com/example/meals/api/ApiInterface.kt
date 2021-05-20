@@ -2,6 +2,7 @@ package com.example.meals.api
 
 import com.example.meals.models.category.CategoryResponse
 import com.example.meals.models.recipe.CategoryRecipeResponse
+import com.example.meals.models.search.Meal
 import com.example.meals.models.search.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,5 +18,8 @@ interface ApiInterface {
 
     @GET("search.php")
     suspend fun getSearchedRecipe(@Query("s") query: String): Response<SearchResponse>
+
+    @GET("lookup.php")
+    suspend fun getRecipeDetails(@Query("i") query: String):Response<SearchResponse>
 
 }

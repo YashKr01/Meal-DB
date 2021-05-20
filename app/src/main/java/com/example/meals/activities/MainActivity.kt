@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
         setContentView(binding.root)
 
         categoryAdapter = CategoryAdapter(categoryList, this, this)
-        recipeAdapter = CategoryRecipeAdapter(recipeList, this)
+        recipeAdapter = CategoryRecipeAdapter(recipeList, this, this)
 
         binding.categoriesRecyclerView.apply {
             setHasFixedSize(true)
@@ -74,6 +74,12 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
             recipeList.addAll(it)
             recipeAdapter.notifyDataSetChanged()
         })
+    }
+
+    override fun categoryRecipeClickListener(recipe: CategoryRecipe) {
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("QUERY", recipe.id)
+        startActivity(intent)
     }
 
 }

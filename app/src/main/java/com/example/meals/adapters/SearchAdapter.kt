@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.meals.R
+import com.example.meals.listeners.RecipeClickListener
 import com.example.meals.models.search.Meal
 
-class SearchAdapter(private val list: List<Meal>) :
+class SearchAdapter(private val list: List<Meal>, private val listener: RecipeClickListener) :
     RecyclerView.Adapter<SearchAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -26,6 +27,10 @@ class SearchAdapter(private val list: List<Meal>) :
         holder.name.text = currentItem.name
         holder.image.load(currentItem.image) {
             crossfade(true)
+        }
+
+        holder.image.setOnClickListener {
+            listener.onRecipeClick(currentItem)
         }
 
     }

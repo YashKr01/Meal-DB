@@ -1,5 +1,6 @@
 package com.example.meals.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,12 +9,13 @@ import androidx.appcompat.widget.SearchView
 import com.example.meals.R
 import com.example.meals.adapters.SearchAdapter
 import com.example.meals.databinding.ActivitySearchBinding
+import com.example.meals.listeners.RecipeClickListener
 import com.example.meals.models.search.Meal
 import com.example.meals.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, RecipeClickListener {
 
     private lateinit var binding: ActivitySearchBinding
     private val viewModel: SearchViewModel by viewModels()
@@ -28,7 +30,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        searchAdapter = SearchAdapter(list)
+        searchAdapter = SearchAdapter(list, this)
 
         binding.recyclerView.apply {
             setHasFixedSize(true)
@@ -65,6 +67,12 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(newText: String?): Boolean {
         list.clear()
         return true
+    }
+
+    override fun onRecipeClick(meal: Meal) {
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("QUERY", meal.id)
+        startActivity(intent)
     }
 
 }

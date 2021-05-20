@@ -12,11 +12,13 @@ class Repository @Inject constructor(private val apiInterface: ApiInterface) {
     suspend fun getCategoriesList(): Response<CategoryResponse> =
         apiInterface.getCategoryList()
 
-
     suspend fun getCategoryRecipes(query: String): Response<CategoryRecipeResponse> =
         apiInterface.getCategoryRecipes(query)
 
     suspend fun getSearchedRecipes(query: String): Response<SearchResponse> =
         apiInterface.getSearchedRecipe(query)
+
+    suspend fun getRecipeDetails(query: String): Response<SearchResponse> =
+        apiInterface.getRecipeDetails(query)
 
 }
