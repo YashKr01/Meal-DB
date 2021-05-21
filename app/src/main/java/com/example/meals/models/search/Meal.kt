@@ -1,9 +1,14 @@
 package com.example.meals.models.search
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "MEAL")
 data class Meal(
+
+    @PrimaryKey(autoGenerate = false)
     @Expose
     @SerializedName("idMeal")
     val id: String,

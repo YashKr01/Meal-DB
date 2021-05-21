@@ -1,7 +1,10 @@
 package com.example.meals.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.meals.api.ApiInterface
+import com.example.meals.database.MealDao
+import com.example.meals.database.MealDatabase
 import com.example.meals.utils.Constants.Companion.BASE_URL
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
@@ -38,5 +41,16 @@ object AppModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiInterface =
         retrofit.create(ApiInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext context: Context): MealDatabase =
+        Room.databaseBuilder(context, MealDatabase::class.java, "MEAL").build()
+
+    @Singleton
+    @Provides
+    fun provideDao(mealDatabase: MealDatabase): MealDao =
+        mealDatabase.mealDao()
+
 
 }
