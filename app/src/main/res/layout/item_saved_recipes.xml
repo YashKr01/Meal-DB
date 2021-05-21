@@ -6,6 +6,11 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/_4sdp">
 
+    <View
+        android:id="@+id/viewSupporter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/txt_saved_meal_image" />
 
     <View
         android:id="@+id/viewBackground"
@@ -19,8 +24,7 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/txt_saved_meal_image"
         android:layout_width="@dimen/_80sdp"
-        android:background="@color/colorTextSecondary"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="@dimen/_120sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:fontFamily="@font/ubuntu_medium"
         android:includeFontPadding="false"
@@ -59,6 +63,22 @@
         app:layout_constraintStart_toStartOf="@id/txt_saved_meal_name"
         app:layout_constraintTop_toBottomOf="@id/txt_saved_meal_name"
         tools:text="Description" />
+
+    <TextView
+        android:id="@+id/txt_saved_meal_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/ubuntu_regular"
+        android:includeFontPadding="false"
+        android:maxLines="3"
+        android:textColor="@color/colorAccent1"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="@id/txt_saved_meal_category"
+        app:layout_constraintStart_toStartOf="@id/txt_saved_meal_category"
+        app:layout_constraintTop_toBottomOf="@id/txt_saved_meal_category"
+        tools:text="Location" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

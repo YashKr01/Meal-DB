@@ -52,5 +52,4 @@ object AppModule {
     fun provideDao(mealDatabase: MealDatabase): MealDao =
         mealDatabase.mealDao()
 
-
 }

@@ -20,9 +20,9 @@ class CategoryRecipeAdapter(
 ) : RecyclerView.Adapter<CategoryRecipeAdapter.RecipeViewHolder>() {
 
     inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image: ImageView = itemView.findViewById(R.id.img_item_recipe)
-        val name: TextView = itemView.findViewById(R.id.txt_item_recipe_name)
-        val description: TextView = itemView.findViewById(R.id.txt_recipe_description)
+        val image: ImageView = itemView.findViewById(R.id.txt_saved_meal_image)
+        val name: TextView = itemView.findViewById(R.id.txt_saved_meal_name)
+        val description: TextView = itemView.findViewById(R.id.txt_saved_meal_category)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder =

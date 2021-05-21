@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Meals">
-        <activity android:name=".activities.DetailsActivity"></activity>
+        <activity android:name=".activities.SavedActivity"></activity>
+        <activity android:name=".activities.DetailsActivity" />
         <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

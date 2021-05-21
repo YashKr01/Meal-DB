@@ -63,6 +63,10 @@ class MainActivity : AppCompatActivity(), CategoryClickListener {
             startActivity(Intent(this, SearchActivity::class.java))
         }
 
+        binding.floatingActionButton.setOnClickListener {
+            startActivity(Intent(this, SavedActivity::class.java))
+        }
+
     }
 
     override fun categoryClickListener(category: Category) {
