@@ -32,5 +32,5 @@ data class Meal(
     val instruction: String,
     @Expose
     @SerializedName("strTags")
-    val tags: String
+    val tags: String?
 )

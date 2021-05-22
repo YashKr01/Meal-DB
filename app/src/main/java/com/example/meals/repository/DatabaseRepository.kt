@@ -13,4 +13,6 @@ class DatabaseRepository @Inject constructor(private val mealDao: MealDao) {
     fun getList(): LiveData<List<Meal>> =
         mealDao.getMeals()
 
+    suspend fun deleteMeal(meal: Meal) = mealDao.deleteMeal(meal)
+
 }

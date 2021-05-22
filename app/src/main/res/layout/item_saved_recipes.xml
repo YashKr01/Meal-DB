@@ -29,17 +29,19 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_corner_radius="@dimen/_4sdp" />
+        app:riv_corner_radius="@dimen/_6sdp" />
 
     <TextView
         android:id="@+id/txt_saved_meal_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_36sdp"
         android:layout_marginEnd="@dimen/_8sdp"
+        android:ellipsize="end"
         android:fontFamily="@font/ubuntu_medium"
         android:includeFontPadding="false"
+        android:maxLines="1"
         android:paddingTop="@dimen/_8sdp"
         android:textColor="@color/colorTextPrimary"
         android:textSize="@dimen/_13ssp"
@@ -80,5 +82,31 @@
         app:layout_constraintTop_toBottomOf="@id/txt_saved_meal_category"
         tools:text="Location" />
 
+    <TextView
+        android:id="@+id/txt_saved_meal_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/ubuntu_regular"
+        android:includeFontPadding="false"
+        android:maxLines="2"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="@id/txt_saved_meal_location"
+        app:layout_constraintStart_toStartOf="@id/txt_saved_meal_location"
+        app:layout_constraintTop_toBottomOf="@id/txt_saved_meal_location"
+        tools:text="Location" />
+
+    <ImageView
+        android:id="@+id/img_delete"
+        android:layout_width="27dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_saved_meal_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_delete"
+        app:tint="@color/colorThemeExtra" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

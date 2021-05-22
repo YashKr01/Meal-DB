@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meals.R
 import com.example.meals.adapters.SavedMealAdapter
 import com.example.meals.databinding.ActivitySavedBinding
+import com.example.meals.listeners.DeleteClickListener
 import com.example.meals.models.search.Meal
 import com.example.meals.viewmodel.SavedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SavedActivity : AppCompatActivity() {
+class SavedActivity : AppCompatActivity(), DeleteClickListener {
 
     private lateinit var binding: ActivitySavedBinding
     private val viewModel: SavedViewModel by viewModels()
@@ -25,7 +26,7 @@ class SavedActivity : AppCompatActivity() {
         binding = ActivitySavedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        savedAdapter = SavedMealAdapter(list)
+        savedAdapter = SavedMealAdapter(list, this)
 
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@SavedActivity)
@@ -39,4 +40,9 @@ class SavedActivity : AppCompatActivity() {
         })
 
     }
+
+    override fun deleteItem(meal: Meal, position: Int) {
+        viewModel.deleteMeal(meal)
+    }
+
 }

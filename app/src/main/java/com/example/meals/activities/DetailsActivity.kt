@@ -7,6 +7,7 @@ import coil.load
 import com.example.meals.databinding.ActivityDetailsBinding
 import com.example.meals.models.search.Meal
 import com.example.meals.viewmodel.DetailsViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,12 +48,14 @@ class DetailsActivity : AppCompatActivity() {
                 meal.name,
                 meal.image,
                 meal.instruction,
-                meal.tags
+                null
             )
 
             viewModel.insertRecipes(item)
-        }
 
+            val snackBar: Snackbar = Snackbar.make(it, "Meal Inserted", Snackbar.LENGTH_SHORT)
+            snackBar.show()
+        }
 
     }
 }

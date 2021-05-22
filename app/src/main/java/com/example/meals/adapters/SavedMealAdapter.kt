@@ -8,11 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.meals.R
+import com.example.meals.listeners.DeleteClickListener
 import com.example.meals.listeners.RecipeClickListener
 import com.example.meals.models.search.Meal
 
-class SavedMealAdapter(private val list: List<Meal>) :
-    RecyclerView.Adapter<SavedMealAdapter.ItemViewHolder>() {
+class SavedMealAdapter(
+    private val list: List<Meal>,
+    private val listener: DeleteClickListener
+) : RecyclerView.Adapter<SavedMealAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
@@ -29,6 +32,10 @@ class SavedMealAdapter(private val list: List<Meal>) :
             name.text = currentItem.name
             location.text = currentItem.location
             category.text = currentItem.category
+            description.text = currentItem.instruction
+            delete.setOnClickListener {
+                listener.deleteItem(currentItem, position)
+            }
         }
 
     }
@@ -40,6 +47,8 @@ class SavedMealAdapter(private val list: List<Meal>) :
         val name: TextView = item.findViewById(R.id.txt_saved_meal_name)
         val location: TextView = item.findViewById(R.id.txt_saved_meal_location)
         val category: TextView = item.findViewById(R.id.txt_saved_meal_category)
+        val description: TextView = item.findViewById(R.id.txt_saved_meal_description)
+        val delete: ImageView = item.findViewById(R.id.img_delete)
     }
 
 }
